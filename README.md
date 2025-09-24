@@ -16,11 +16,14 @@ A sleek, dark-themed web-based number converter and calculator that supports dec
 - Support for mixed number bases in calculations
 
 ### 🧮 **Advanced Calculator**
-- Basic operations: `+`, `-`, `×`, `÷`
-- Exponentiation: `^` (power)
-- Modulo: `%`
-- Parentheses: `()` for complex expressions
-- Mixed base calculations (e.g., `0xFF + 1010`)
+- **Basic Operations**: `+`, `-`, `×`, `÷`, `^` (power), `%` (modulo)
+- **Trigonometric Functions**: `sin`, `cos`, `tan`, `asin`, `acos`, `atan`
+- **Logarithmic Functions**: `log` (base 10), `ln` (natural log)
+- **Power Functions**: `√` (square root), `∛` (cube root), `|x|` (absolute value)
+- **Mathematical Constants**: `π` (pi), `e` (Euler's number), `φ` (golden ratio)
+- **Advanced Operations**: `n!` (factorial), `gcd`, `lcm`, `⌊x⌋` (floor)
+- **Parentheses**: `()` for complex expressions
+- **Mixed Base Calculations**: Combine different number systems (e.g., `0xFF + 1010`)
 
 ### 📚 **History Management**
 - Persistent calculation history
@@ -32,6 +35,7 @@ A sleek, dark-themed web-based number converter and calculator that supports dec
 ### 🎨 **Modern UI/UX**
 - **Multiple Themes**: Dark, Light, Ocean, and Purple themes
 - **Theme Selector**: Easy theme switching with preview
+- **Settings Menu**: Advanced calculator functions with organized sections
 - **Glass-morphism effects** with backdrop blur
 - **Rounded corners** and smooth animations
 - **Responsive design** (mobile-friendly)
@@ -76,6 +80,27 @@ Input: 2^8
 Output: Decimal: 256, Hex: 100, Binary: 100000000
 ```
 
+### Advanced Mathematical Functions
+```
+Input: sin(π/2)
+Output: Decimal: 1, Hex: 1, Binary: 1
+
+Input: sqrt(16)
+Output: Decimal: 4, Hex: 4, Binary: 100
+
+Input: log(100)
+Output: Decimal: 2, Hex: 2, Binary: 10
+
+Input: factorial(5)
+Output: Decimal: 120, Hex: 78, Binary: 1111000
+
+Input: gcd(12, 18)
+Output: Decimal: 6, Hex: 6, Binary: 110
+
+Input: π * 2
+Output: Decimal: 6.283185307179586, Hex: 6.4A, Binary: 110.01001
+```
+
 ### Mixed Base Calculations
 ```
 Input: 0xFF + 1010
@@ -116,7 +141,7 @@ Output: Decimal: 15, Hex: F, Binary: 1111
 - **Hexadecimal**: `FF`, `A1B2`, `0xFF` (with or without prefix)
 - **Binary**: `1010`, `1111`
 
-### Mathematical Operations
+### Basic Mathematical Operations
 - **Addition**: `+`
 - **Subtraction**: `-`
 - **Multiplication**: `×` or `*`
@@ -124,6 +149,13 @@ Output: Decimal: 15, Hex: F, Binary: 1111
 - **Exponentiation**: `^`
 - **Modulo**: `%`
 - **Parentheses**: `()` for grouping
+
+### Advanced Mathematical Functions
+- **Trigonometric**: `sin()`, `cos()`, `tan()`, `asin()`, `acos()`, `atan()`
+- **Logarithmic**: `log()` (base 10), `ln()` (natural log)
+- **Power Functions**: `sqrt()`, `cbrt()`, `abs()`, `floor()`
+- **Constants**: `π`, `e`, `φ` (golden ratio)
+- **Advanced**: `factorial()`, `gcd()`, `lcm()`
 
 ## 🏗️ Project Structure
 
@@ -152,10 +184,12 @@ converter/
 ### Key Features
 - **Real-time conversion**: Updates as you type
 - **Expression parsing**: Handles complex mathematical expressions
+- **Advanced calculator**: Professional-grade mathematical functions
 - **Error handling**: Graceful error display
 - **Responsive design**: Works on all screen sizes
 - **Accessibility**: Keyboard navigation support
 - **Theme system**: 4 beautiful themes with persistent storage
+- **Settings menu**: Organized advanced functions
 - **History management**: Track and reload previous calculations
 - **Mixed base calculations**: Combine different number systems
 
@@ -214,6 +248,12 @@ A: Make sure you're clicking the theme option, not just the preview circle. Try 
 
 **Q: Theme not persisting after refresh?**
 A: Check if your browser allows localStorage. Try clearing browser data and refreshing.
+
+**Q: Advanced functions not working?**
+A: Make sure you're using the correct syntax. Functions need parentheses: `sin(90)`, not `sin90`.
+
+**Q: Settings menu not opening?**
+A: Click the ⚙️ settings icon in the bottom right corner. Make sure JavaScript is enabled.
 
 ## 📝 License
 
