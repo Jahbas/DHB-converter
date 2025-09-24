@@ -30,11 +30,14 @@ A sleek, dark-themed web-based number converter and calculator that supports dec
 - Local storage (saved in browser)
 
 ### 🎨 **Modern UI/UX**
-- Dark theme with glass-morphism effects
-- Rounded corners and smooth animations
-- Responsive design (mobile-friendly)
-- Visual feedback and error handling
-- Input type indicator
+- **Multiple Themes**: Dark, Light, Ocean, and Purple themes
+- **Theme Selector**: Easy theme switching with preview
+- **Glass-morphism effects** with backdrop blur
+- **Rounded corners** and smooth animations
+- **Responsive design** (mobile-friendly)
+- **Visual feedback** and error handling
+- **Input type indicator** with auto-detection
+- **Consistent white text** across all themes
 
 ## 🚀 Quick Start
 
@@ -91,6 +94,21 @@ Output: Decimal: 15, Hex: F, Binary: 1111
 | `Ctrl+K` | Clear input |
 | `Ctrl+L` | Clear history |
 
+## 🎨 Theme System
+
+### **Available Themes:**
+- **Dark** (Default) - Original dark blue gradient
+- **Light** - Clean light gradient with blue accents
+- **Ocean** - Purple to blue gradient
+- **Purple** - Soft purple to pink gradient
+
+### **Theme Features:**
+- **Theme Selector**: Click the 🎨 button in bottom right
+- **Instant Switching**: Themes change immediately
+- **Persistent Storage**: Your choice is saved
+- **Visual Previews**: See theme colors before switching
+- **Consistent Design**: All themes maintain the same layout and functionality
+
 ## 🎯 Supported Operations
 
 ### Number Formats
@@ -137,21 +155,35 @@ converter/
 - **Error handling**: Graceful error display
 - **Responsive design**: Works on all screen sizes
 - **Accessibility**: Keyboard navigation support
+- **Theme system**: 4 beautiful themes with persistent storage
+- **History management**: Track and reload previous calculations
+- **Mixed base calculations**: Combine different number systems
 
 ## 🎨 Customization
 
-### Changing Themes
-The dark theme can be customized by modifying the CSS variables in `style.css`:
+### Adding New Themes
+To add a new theme, add CSS variables in `style.css`:
 
 ```css
-/* Main background gradient */
-background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-
-/* Accent colors */
---primary-color: #64b5f6;
---error-color: #ff6b6b;
---success-color: #66bb6a;
+/* New Theme */
+[data-theme="newtheme"] {
+    --bg-primary: linear-gradient(135deg, #color1 0%, #color2 50%, #color3 100%);
+    --bg-card: rgba(255, 255, 255, 0.1);
+    --bg-input: rgba(255, 255, 255, 0.15);
+    --bg-input-focus: rgba(255, 255, 255, 0.2);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-focus: #accent-color;
+    --accent-color: #accent-color;
+    --error-color: #error-color;
+    --success-color: #success-color;
+    --warning-color: #warning-color;
+}
 ```
+
+Then add the theme option to the HTML and JavaScript.
 
 ### Adding New Operations
 To add new mathematical operations, modify the `processExpression()` function in `script.js`:
@@ -176,6 +208,12 @@ A: Check if your browser allows local storage. Try clearing browser data and ref
 
 **Q: Calculator buttons not working?**
 A: Make sure JavaScript is enabled in your browser.
+
+**Q: Theme not changing?**
+A: Make sure you're clicking the theme option, not just the preview circle. Try refreshing the page.
+
+**Q: Theme not persisting after refresh?**
+A: Check if your browser allows localStorage. Try clearing browser data and refreshing.
 
 ## 📝 License
 
