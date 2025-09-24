@@ -26,17 +26,32 @@
             <div class="results-section">
                 <div class="result-group">
                     <label>Decimal</label>
-                    <div class="result-display" id="decimalResult">0</div>
+                    <div class="result-container">
+                        <div class="result-display" id="decimalResult">0</div>
+                        <button class="copy-btn" data-target="decimalResult" title="Copy to clipboard">
+                            <span class="copy-icon">📋</span>
+                        </button>
+                    </div>
                 </div>
                 
                 <div class="result-group">
                     <label>Hexadecimal</label>
-                    <div class="result-display" id="hexResult">0</div>
+                    <div class="result-container">
+                        <div class="result-display" id="hexResult">0</div>
+                        <button class="copy-btn" data-target="hexResult" title="Copy to clipboard">
+                            <span class="copy-icon">📋</span>
+                        </button>
+                    </div>
                 </div>
                 
                 <div class="result-group">
                     <label>Binary</label>
-                    <div class="result-display" id="binaryResult">0</div>
+                    <div class="result-container">
+                        <div class="result-display" id="binaryResult">0</div>
+                        <button class="copy-btn" data-target="binaryResult" title="Copy to clipboard">
+                            <span class="copy-icon">📋</span>
+                        </button>
+                    </div>
                 </div>
             </div>
             
@@ -148,6 +163,14 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Custom Notification -->
+        <div class="notification" id="notification">
+            <div class="notification-content">
+                <span class="notification-icon">✅</span>
+                <span class="notification-text">Copied to clipboard!</span>
             </div>
         </div>
     </div>

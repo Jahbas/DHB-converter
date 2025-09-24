@@ -116,6 +116,13 @@ body {
     gap: 6px;
 }
 
+.result-container {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+}
+
 .result-group label {
     color: rgba(255, 255, 255, 0.8);
     font-weight: 600;
@@ -133,14 +140,53 @@ body {
     font-weight: 600;
     font-family: 'Courier New', monospace;
     min-height: 45px;
+    max-height: 120px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     transition: all 0.3s ease;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-y: auto;
+    line-height: 1.4;
+    flex: 1;
 }
 
 .result-display:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.15);
+}
+
+.copy-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 45px;
+    height: 45px;
+    opacity: 0.7;
+}
+
+.copy-btn:hover {
+    background: rgba(100, 181, 246, 0.2);
+    border-color: rgba(100, 181, 246, 0.3);
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.copy-btn:active {
+    transform: translateY(0);
+}
+
+.copy-icon {
+    font-size: 1.2rem;
 }
 
 /* Calculator Section */
@@ -352,6 +398,18 @@ body {
         font-size: 1rem;
         padding: 10px 12px;
         min-height: 40px;
+        max-height: 100px;
+        font-size: 0.9rem;
+    }
+    
+    .copy-btn {
+        min-width: 40px;
+        height: 40px;
+        padding: 6px 10px;
+    }
+    
+    .copy-icon {
+        font-size: 1rem;
     }
 }
 
@@ -870,4 +928,65 @@ body {
 
 .settings-content::-webkit-scrollbar-thumb:hover {
     background: rgba(var(--accent-color), 0.7);
+}
+
+/* Result display scrollbar */
+.result-display::-webkit-scrollbar {
+    width: 4px;
+}
+
+.result-display::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+.result-display::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+.result-display::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Custom Notification */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100px);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.notification.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    color: var(--text-primary);
+}
+
+.notification-icon {
+    font-size: 1.2rem;
+    color: var(--success-color);
+}
+
+.notification-text {
+    font-size: 0.95rem;
+    font-weight: 600;
 }

@@ -33,6 +33,10 @@ class NumberConverterCalculator {
         this.settingsMenu = document.getElementById('settingsMenu');
         this.closeSettings = document.getElementById('closeSettings');
         this.functionButtons = document.querySelectorAll('.func-btn');
+        
+        // Copy and notification elements
+        this.copyButtons = document.querySelectorAll('.copy-btn');
+        this.notification = document.getElementById('notification');
     }
     
     initializeState() {
@@ -74,6 +78,11 @@ class NumberConverterCalculator {
         this.closeSettings.addEventListener('click', () => this.closeSettingsMenu());
         this.functionButtons.forEach(btn => {
             btn.addEventListener('click', (e) => this.handleFunctionButton(e));
+        });
+        
+        // Copy functionality
+        this.copyButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => this.handleCopyButton(e));
         });
         
         // Close menus when clicking outside
@@ -355,9 +364,17 @@ class NumberConverterCalculator {
         
         this.decimalResult.textContent = decimal.toString();
         this.hexResult.textContent = decimal.toString(16).toUpperCase();
-        this.binaryResult.textContent = decimal.toString(2);
+        this.binaryResult.textContent = this.formatBinary(decimal.toString(2));
         
         this.isUpdating = false;
+    }
+    
+    formatBinary(binaryString) {
+        // Add spaces every 8 digits for better readability
+        if (binaryString.length > 8) {
+            return binaryString.replace(/(.{8})/g, '$1 ').trim();
+        }
+        return binaryString;
     }
     
     clearResults() {
@@ -510,6 +527,54 @@ class NumberConverterCalculator {
     
     closeSettingsMenu() {
         this.settingsMenu.classList.remove('active');
+    }
+    
+    // Copy functionality
+    handleCopyButton(event) {
+        const targetId = event.target.closest('.copy-btn').dataset.target;
+        const targetElement = document.getElementById(targetId);
+        const textToCopy = targetElement.textContent;
+        
+        this.copyToClipboard(textToCopy);
+    }
+    
+    async copyToClipboard(text) {
+        try {
+            // Remove spaces from binary numbers for copying
+            const cleanText = text.replace(/\s/g, '');
+            
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(cleanText);
+            } else {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = cleanText;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-999999px';
+                textArea.style.top = '-999999px';
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                document.execCommand('copy');
+                textArea.remove();
+            }
+            
+            this.showNotification();
+        } catch (error) {
+            console.error('Failed to copy text: ', error);
+            this.showNotification('Failed to copy');
+        }
+    }
+    
+    showNotification(message = 'Copied to clipboard!') {
+        const notificationText = this.notification.querySelector('.notification-text');
+        notificationText.textContent = message;
+        
+        this.notification.classList.add('show');
+        
+        setTimeout(() => {
+            this.notification.classList.remove('show');
+        }, 2000);
     }
 }
 
