@@ -13,10 +13,16 @@ class NumberConverterCalculator {
         this.equalsBtn = document.getElementById('equalsBtn');
         this.clearHistoryBtn = document.getElementById('clearHistoryBtn');
         
+        // Theme elements
+        this.themeToggle = document.getElementById('themeToggle');
+        this.themeMenu = document.getElementById('themeMenu');
+        this.themeOptions = document.querySelectorAll('.theme-option');
+        
         this.history = JSON.parse(localStorage.getItem('converterHistory')) || [];
         this.isUpdating = false;
         
         this.initializeEventListeners();
+        this.initializeTheme();
         this.updateHistoryDisplay();
     }
     
@@ -40,6 +46,19 @@ class NumberConverterCalculator {
         this.historyList.addEventListener('click', (e) => {
             if (e.target.closest('.history-item')) {
                 this.loadFromHistory(e.target.closest('.history-item'));
+            }
+        });
+        
+        // Theme functionality
+        this.themeToggle.addEventListener('click', () => this.toggleThemeMenu());
+        this.themeOptions.forEach(option => {
+            option.addEventListener('click', (e) => this.changeTheme(e.target.closest('.theme-option').dataset.theme));
+        });
+        
+        // Close theme menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.theme-selector')) {
+                this.closeThemeMenu();
             }
         });
     }
@@ -334,6 +353,48 @@ class NumberConverterCalculator {
     
     saveHistory() {
         localStorage.setItem('converterHistory', JSON.stringify(this.history));
+    }
+    
+    // Theme functionality
+    initializeTheme() {
+        const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
+        this.changeTheme(savedTheme);
+    }
+    
+    toggleThemeMenu() {
+        this.themeMenu.classList.toggle('active');
+    }
+    
+    closeThemeMenu() {
+        this.themeMenu.classList.remove('active');
+    }
+    
+    changeTheme(themeName) {
+        // Remove existing theme classes
+        document.documentElement.removeAttribute('data-theme');
+        
+        // Apply new theme
+        if (themeName !== 'dark') {
+            document.documentElement.setAttribute('data-theme', themeName);
+        }
+        
+        // Save theme preference
+        localStorage.setItem('selectedTheme', themeName);
+        
+        // Close theme menu
+        this.closeThemeMenu();
+        
+        // Update active theme indicator
+        this.updateActiveTheme(themeName);
+    }
+    
+    updateActiveTheme(themeName) {
+        this.themeOptions.forEach(option => {
+            option.classList.remove('active');
+            if (option.dataset.theme === themeName) {
+                option.classList.add('active');
+            }
+        });
     }
 }
 
