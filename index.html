@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Converter & Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="converter-card">
+            <h1 class="title">Number Converter & Calculator</h1>
+            <p class="subtitle">Enter numbers or expressions to convert and calculate</p>
+            
+            <!-- Main Input Bar -->
+            <div class="main-input-section">
+                <div class="input-group main-input">
+                    <input type="text" id="mainInput" placeholder="Enter number or expression (e.g., 255, 0xFF, 1010, 10+5, 0xFF*2)" autocomplete="off">
+                    <div class="input-type-indicator">
+                        <span id="inputType">Auto-detect</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Results Display -->
+            <div class="results-section">
+                <div class="result-group">
+                    <label>Decimal</label>
+                    <div class="result-display" id="decimalResult">0</div>
+                </div>
+                
+                <div class="result-group">
+                    <label>Hexadecimal</label>
+                    <div class="result-display" id="hexResult">0</div>
+                </div>
+                
+                <div class="result-group">
+                    <label>Binary</label>
+                    <div class="result-display" id="binaryResult">0</div>
+                </div>
+            </div>
+            
+            <!-- Calculator Buttons -->
+            <div class="calculator-section">
+                <div class="calc-buttons">
+                    <button class="calc-btn" data-op="+">+</button>
+                    <button class="calc-btn" data-op="-">-</button>
+                    <button class="calc-btn" data-op="*">×</button>
+                    <button class="calc-btn" data-op="/">÷</button>
+                    <button class="calc-btn" data-op="(">(</button>
+                    <button class="calc-btn" data-op=")">)</button>
+                    <button class="calc-btn" data-op="^">^</button>
+                    <button class="calc-btn" data-op="%">%</button>
+                </div>
+            </div>
+            
+            <!-- Control Buttons -->
+            <div class="control-buttons">
+                <button id="clearBtn" class="control-btn clear">Clear</button>
+                <button id="backspaceBtn" class="control-btn backspace">⌫</button>
+                <button id="equalsBtn" class="control-btn equals">=</button>
+            </div>
+            
+            <!-- History Section -->
+            <div class="history-section">
+                <div class="history-header">
+                    <h3>History</h3>
+                    <button id="clearHistoryBtn" class="clear-history">Clear History</button>
+                </div>
+                <div class="history-list" id="historyList">
+                    <div class="history-empty">No calculations yet</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
